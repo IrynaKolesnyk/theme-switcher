@@ -12,7 +12,7 @@ const dark = {
     input: "#111111",
     button: "#504F4F",
     buttonText: "#FFFFFF",
-    attention: "#DC143C",
+    attention: "#6e4ac2",
     edit: "#14dc6783",
   },
 };

@@ -1,12 +1,21 @@
-import React from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import themes from "../themes";
 const usePersistedTheme = () => {
   const getTheme = () => {
-    const storageTheme = JSON.parse(localStorage.gatItem("theme"));
-    return storageTheme || "light";
+    const storageTheme = JSON.parse(localStorage.getItem("theme"));
+    return themes[storageTheme] || themes.light;
   };
-  const [theme, settheme] = useState();
-  return <h1>ghjg</h1>;
+  const [theme, setTheme] = useState(getTheme());
+
+  const changeTheme = () => {
+    theme.title === "dark" ? setTheme(themes.light) : setTheme(themes.dark);
+  };
+
+  useEffect(() => {
+    localStorage.setItem("theme", JSON.stringify(theme.title));
+  }, [theme]);
+
+  return [theme, changeTheme];
 };
 
 export default usePersistedTheme;

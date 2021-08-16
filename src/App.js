@@ -4,20 +4,18 @@ import { getCurrentUser } from "./redux/auth/auth-operations";
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
 import themes from "./themes";
+import usePersistedTheme from "./hooks/usePersistedTheme";
 
 export const ThemeContext = createContext();
 
 const App = () => {
-  const [theme, setTheme] = useState(themes.dark);
+  const [theme, changeTheme] = usePersistedTheme();
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getCurrentUser());
   }, [dispatch]);
-
-  const changeTheme = () => {
-    theme.title === "dark" ? setTheme(themes.light) : setTheme(themes.dark);
-  };
 
   return (
     <>

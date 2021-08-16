@@ -24,11 +24,11 @@ const HeaderStyled = styled.header`
     color: #3a3ad1;
     font-weight: 900;
     &:hover {
-      color: #6e4ac2;
+      color: ${(props) => props.colors.main};
     }
   }
-  .activeLink {
-    color: #6e4ac2;
+  .navLinkActive {
+    color: ${(props) => props.colors.attention};
   }
 `;
 
